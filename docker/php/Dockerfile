@@ -19,6 +19,9 @@ RUN apt-get update \
   # PDO_MYSQL は、PHP から MySQL データベースへのアクセスを可能にするための PHP Data Objects (PDO) インターフェイス を実装したドライバ。
   && docker-php-ext-install zip pdo_mysql gmp gd
 
+# プロキシ環境下でビルドする場合に指定する(LinuxじゃなくWindows下)
+ARG http_proxy
+ARG https_proxy
 # nodeインストール(aptだとNodejsは古いため、パッケージマネージャの n を使用してインストール)
 RUN apt-get install -y npm \
   && npm install n -g \
